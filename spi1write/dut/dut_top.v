@@ -21,7 +21,7 @@ spi_slave i_spi_slave (
 
 register i_register (
  .RSTX   (RSTX),
- .CLK    (CS),
+ .CLK    (SCLK),
  .WEN    (wen),
  .WADDR  (waddr),
  .WDATA  (wdata),

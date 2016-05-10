@@ -4,11 +4,12 @@
 iverilog \
  -g2001 \
  -o intermediate/$1.vvp \
- spi_master.v \
+ -I ../tb \
+ ../tb/spi_master.v \
  ../dut/dut_top.v \
  ../dut/spi_slave.v \
  ../dut/register.v \
- $1.v
+ ../scenario/$1.v
 
 if [ $? -eq 0 ] ; then
   vvp intermediate/$1.vvp

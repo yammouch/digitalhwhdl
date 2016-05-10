@@ -1,3 +1,5 @@
+`timescale 1ns/1ps
+
 module tb;
 
 `include "inst.vinc"
@@ -22,7 +24,9 @@ reg [31:0] f_hdl;
 reg [ 7:0] data;
 begin
   f_hdl = $fopen("result/test000.log");
-  RSTX = 1'b0;
+  #1000; // 1us
+  RSTX = 1'b0; spi.CS = 1'b0; #1000; // 1us
+  RSTX = 1'b1; spi.CS = 1'b1; #1000; // 1us
   test1(f_hdl, 8'h00, 8'h01);
   data = 8'h01; repeat (8) begin
     test1(f_hdl, 8'h01, data);

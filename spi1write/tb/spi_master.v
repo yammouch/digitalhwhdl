@@ -19,14 +19,14 @@ task write(input [7:0] addr, input [7:0] data);
 begin
   CS = 1'b0; #(cycle/2);
   repeat (8) begin
-    {SCLK, SDATA} = {1'b0, addr[0]}; #(cycle/2);
-    {SCLK, SDATA} = {1'b1, addr[0]}; #(cycle/2);
-    addr = addr >> 1;
+    {SCLK, SDATA} = {1'b0, addr[7]}; #(cycle/2);
+    {SCLK, SDATA} = {1'b1, addr[7]}; #(cycle/2);
+    addr = addr << 1;
   end
   repeat (8) begin
-    {SCLK, SDATA} = {1'b0, data[0]}; #(cycle/2);
-    {SCLK, SDATA} = {1'b1, data[0]}; #(cycle/2);
-    data = data >> 1;
+    {SCLK, SDATA} = {1'b0, data[7]}; #(cycle/2);
+    {SCLK, SDATA} = {1'b1, data[7]}; #(cycle/2);
+    data = data << 1;
   end
   {SCLK, SDATA} = 2'b00; #(cycle/2);
   CS = 1'b1; #(cycle/2);
