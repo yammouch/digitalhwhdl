@@ -4,7 +4,7 @@ module dut_top(
  input        SCLK,
  input        SDATA,
  output [7:0] REG_00,
- output [7:0] REG_00
+ output [7:0] REG_01
 );
 
 wire       wen;
