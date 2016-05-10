@@ -1,0 +1,11 @@
+reg RSTX;
+spi_master spi(.CS(cs), .SCLK(sclk), .SDATA(sdata));
+dut_top dut(
+ .RSTX   (RSTX),
+ .CS     (cs),
+ .SCLK   (sclk),
+ .SDATA  (sdata),
+ .REG_00 (),
+ .REG_01 ()
+);
+
