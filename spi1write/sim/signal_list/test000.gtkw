@@ -1,0 +1,32 @@
+[*]
+[*] GTKWave Analyzer v3.3.58 (w)1999-2014 BSI
+[*] Tue May 10 05:43:24 2016
+[*]
+[dumpfile] "D:\tyam\src\digitalhwhdl\spi1write\sim\result\test000.vcd"
+[dumpfile_mtime] "Tue May 10 05:42:08 2016"
+[dumpfile_size] 19168
+[savefile] "D:\tyam\src\digitalhwhdl\spi1write\sim\signal_list\test000"
+[timestart] 0
+[size] 1000 600
+[pos] -1 -1
+*-25.682686 19000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.dut.
+[treeopen] tb.spi.
+[sst_width] 197
+[signals_width] 155
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+tb.dut.RSTX
+tb.dut.CS
+tb.dut.SCLK
+tb.dut.SDATA
+tb.dut.i_register.WEN
+@22
+tb.dut.i_register.WADDR[7:0]
+tb.dut.i_register.WDATA[7:0]
+tb.dut.REG_00[7:0]
+tb.dut.REG_01[7:0]
+[pattern_trace] 1
+[pattern_trace] 0
