@@ -13,9 +13,9 @@ assign WADDR = shift_reg[14:7];
 assign WDATA = {shift_reg[6:0], SDATA};
 
 reg [3:0] cnt;
-always @(posedge SCLK or negedge CS)
-  if (!CS) cnt <= 4'd0;
-  else     cnt <= cnt + 4'd1;
+always @(posedge SCLK or posedge CS)
+  if (CS) cnt <= 4'd0;
+  else    cnt <= cnt + 4'd1;
 
 assign WEN = (cnt == 4'd15);
 
