@@ -1,0 +1,33 @@
+[*]
+[*] GTKWave Analyzer v3.3.58 (w)1999-2014 BSI
+[*] Thu May 12 12:20:24 2016
+[*]
+[dumpfile] "D:\tyam\src\digitalhwhdl\cordic_sqrt_seq\sim\result\test000.vcd"
+[dumpfile_mtime] "Thu May 12 12:19:01 2016"
+[dumpfile_size] 54596
+[savefile] "D:\tyam\src\digitalhwhdl\cordic_sqrt_seq\sim\signal_list\test000"
+[timestart] 0
+[size] 1291 600
+[pos] -1 -1
+*-25.836884 16490000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] tb.
+[treeopen] tb.dut.
+[sst_width] 197
+[signals_width] 126
+[sst_expanded] 1
+[sst_vpaned_height] 152
+@28
+tb.dut.rstx
+tb.dut.clk
+tb.dut.start
+@22
+tb.dut.coordx[21:0]
+tb.dut.coordy[21:0]
+tb.dut.din[15:0]
+tb.dut.dout[15:0]
+tb.dut.cnt[3:0]
+tb.dut.prod[40:0]
+@28
+tb.dut.busy
+[pattern_trace] 1
+[pattern_trace] 0
