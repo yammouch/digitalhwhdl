@@ -30,19 +30,21 @@ always @(*)
   default: shamt = 5'd1;
   endcase
 
-reg signed [21:0] coordy;
-reg signed [21:0] coordx;
+reg [21:0] coordy;
+reg [21:0] coordx;
+wire [29:0] coordy_shift = {{8{coordy[21]}}, coordy} >> shamt;
+wire [29:0] coordx_shift = {{8{coordx[21]}}, coordx} >> shamt;
 always @(posedge clk or negedge rstx)
   if (!rstx)        coordy <= 22'd0;
   else if (start)   coordy <= {{2'd0, din} - 18'h04000, 4'd0};
   else if (tracing) coordy <= coordy
-                            + ((coordx >>> shamt) ^ {22{~coordy[21]}})
+                            + ( coordx_shift[21:0] ^ {22{~coordy[21]}} )
                             + {21'd0, ~coordy[21]};
 always @(posedge clk or negedge rstx)
   if (!rstx)        coordx <= 22'd0;
   else if (start)   coordx <= {{2'd0, din} + 18'h04000, 4'd0};
   else if (tracing) coordx <= coordx
-                            + ((coordy >>> shamt) ^ {22{~coordy[21]}})
+                            + ( coordy_shift[21:0] ^ {22{~coordy[21]}} )
                             + {21'd0, ~coordy[21]};
 wire kick_mult = (cnt == 4'd9);
 wire mult_busy;
