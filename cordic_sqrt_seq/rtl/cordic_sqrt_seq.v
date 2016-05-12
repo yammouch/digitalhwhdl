@@ -8,7 +8,7 @@ module cordic_sqrt_seq (
 );
 
 reg [3:0] cnt;
-wire tracing = (cnt >= 4'd8);
+wire tracing = (cnt <= 4'd8);
 always @(posedge clk or negedge rstx)
   if (!rstx)         cnt <= ~4'd0;
   else if (start)    cnt <=  4'd0;
@@ -37,13 +37,13 @@ always @(posedge clk or negedge rstx)
   else if (start)   coordy <= {{2'd0, din} - 18'h04000, 4'd0};
   else if (tracing) coordy <= coordy
                             + ((coordx >>> shamt) ^ {22{~coordy[21]}})
-                            + {21'd0, coordy};
+                            + {21'd0, ~coordy[21]};
 always @(posedge clk or negedge rstx)
   if (!rstx)        coordx <= 22'd0;
   else if (start)   coordx <= {{2'd0, din} + 18'h04000, 4'd0};
   else if (tracing) coordx <= coordx
                             + ((coordy >>> shamt) ^ {22{~coordy[21]}})
-                            + {21'd0, coordy};
+                            + {21'd0, ~coordy[21]};
 wire kick_mult = (cnt == 4'd9);
 wire mult_busy;
 wire [40:0] prod;
