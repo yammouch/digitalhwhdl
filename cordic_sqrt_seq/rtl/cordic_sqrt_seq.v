@@ -15,19 +15,19 @@ always @(posedge clk or negedge rstx)
   else if (!tracing) cnt <= ~4'd0;
   else               cnt <= cnt + 4'd1;
 
-reg [4:0] shamt;
+reg [3:0] shamt;
 always @(*)
   case (cnt)
-  4'd0: shamt = 5'd1;
-  4'd1: shamt = 5'd2;
-  4'd2: shamt = 5'd3;
-  4'd3: shamt = 5'd4;
-  4'd4: shamt = 5'd4;
-  4'd5: shamt = 5'd5;
-  4'd6: shamt = 5'd6;
-  4'd7: shamt = 5'd7;
-  4'd8: shamt = 5'd8;
-  default: shamt = 5'd1;
+  4'd0: shamt = 4'd1;
+  4'd1: shamt = 4'd2;
+  4'd2: shamt = 4'd3;
+  4'd3: shamt = 4'd4;
+  4'd4: shamt = 4'd4;
+  4'd5: shamt = 4'd5;
+  4'd6: shamt = 4'd6;
+  4'd7: shamt = 4'd7;
+  4'd8: shamt = 4'd8;
+  default: shamt = 4'd1;
   endcase
 
 reg [21:0] coordy;
