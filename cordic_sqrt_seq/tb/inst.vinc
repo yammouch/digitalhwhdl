@@ -1,0 +1,15 @@
+reg        rstx;
+wire       clk;
+reg        start;
+reg [15:0] din;
+
+tb_clk_gen cg(.clk(clk));
+
+cordic_sqrt_seq dut (
+ .rstx  (rstx),
+ .clk   (clk),
+ .start (start),
+ .din   (din),
+ .busy  (),
+ .dout  ()
+);
