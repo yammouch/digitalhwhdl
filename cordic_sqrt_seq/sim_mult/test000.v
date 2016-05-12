@@ -9,7 +9,6 @@ wire                clk;
 reg                 rstx;
 reg                 mcand_is_signed;
 reg                 mlier_is_signed;
-reg                 clear;
 reg                 start;
 reg [`BW_MCAND-1:0] mcand;
 reg [`BW_MLIER-1:0] mlier;
@@ -21,23 +20,20 @@ mult #(.BW_CNT(`BW_CNT), .BW_MCAND(`BW_MCAND), .BW_MLIER(`BW_MLIER)) dut(
  .rstx            (rstx),
  .mcand_is_signed (mcand_is_signed),
  .mlier_is_signed (mlier_is_signed),
- .clear           (clear),
  .start           (start),
  .mcand           (mcand),
  .mlier           (mlier),
  .prod            (),
- .prod_valid      ()
+ .busy            ()
 );
 
 task init;
 begin
   rstx  = 1'b0;
-  clear = 1'b1;
   start = 1'b0; #100_000; // 1us
   rstx  = 1'b1; #100_000; // 1us
   cg.en = 1'b1;
-  repeat (3) @(posedge clk);
-  @(posedge clk) clear <= 1'b0;
+  repeat (4) @(posedge clk);
 end
 endtask
 
@@ -57,7 +53,8 @@ begin
   start <= 1'b1;
   @(posedge clk)
   start <= 1'b0;
-  wait(dut.prod_valid == 1'b1);
+  @(posedge clk)
+  wait(dut.busy == 1'b0);
   @(negedge clk)
   if (my_mcand_is_signed) int_mcand = $signed(my_mcand);
   else                    int_mcand = my_mcand;

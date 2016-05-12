@@ -3,12 +3,11 @@ module mult(
  rstx,
  mcand_is_signed,
  mlier_is_signed,
- clear,
  start,
  mcand,
  mlier,
  prod,
- prod_valid
+ busy
 );
 
 parameter BW_CNT = 3,   // ceiling(log2(BW_MLIER));
@@ -24,7 +23,7 @@ input                          start;
 input           [BW_MCAND-1:0] mcand;
 input           [BW_MLIER-1:0] mlier;
 output [BW_MCAND+BW_MLIER-1:0] prod;
-output                         prod_valid;
+output                         busy;
 
 reg [BW_CNT-1:0] cnt;
 wire cnt_eq_0 = (cnt == {BW_CNT{1'b0}});
@@ -36,11 +35,7 @@ always @(posedge clk or negedge rstx)
   else               cnt <= cnt - {{(BW_CNT-1){1'b0}}, 1'd1};
 
 wire cnt_eq_1 = (cnt == {{(BW_CNT-1){1'b0}}, 1'd1});
-reg prod_valid;
-always @(posedge clk or negedge rstx)
-  if (~rstx)      prod_valid <= 1'b0;
-  else if (clear) prod_valid <= 1'b0;
-  else            prod_valid <= cnt_eq_1;
+assign busy = ~cnt_eq_0;
 
 wire last_stage_1 = cnt_eq_1 & mlier_is_signed;
 

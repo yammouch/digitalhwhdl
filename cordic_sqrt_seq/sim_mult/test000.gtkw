@@ -1,40 +1,42 @@
 [*]
 [*] GTKWave Analyzer v3.3.58 (w)1999-2014 BSI
-[*] Wed Mar 25 11:08:13 2015
+[*] Thu May 12 09:15:42 2016
 [*]
-[dumpfile] "D:\tyam\work\filter_training\0040_a_sensor_example\design\sim\mult\result\test000_03_03_04.vcd"
-[dumpfile_mtime] "Wed Mar 25 10:56:34 2015"
-[dumpfile_size] 225765
-[savefile] "D:\tyam\work\filter_training\0040_a_sensor_example\design\sim\mult\scenarios\test000.gtkw"
-[timestart] 794710000
-[size] 901 600
-[pos] 387 -51
-*-22.000000 799800000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[dumpfile] "D:\tyam\src\digitalhwhdl\cordic_sqrt_seq\sim_mult\result\test000_03_03_04.vcd"
+[dumpfile_mtime] "Thu May 12 09:13:16 2016"
+[dumpfile_size] 223866
+[savefile] "D:\tyam\src\digitalhwhdl\cordic_sqrt_seq\sim_mult\test000.gtkw"
+[timestart] 874560000
+[size] 1000 600
+[pos] -1 -1
+*-23.000000 886200000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] tb.
 [sst_width] 197
-[signals_width] 150
+[signals_width] 200
 [sst_expanded] 1
 [sst_vpaned_height] 152
 @28
 tb.dut.clk
 tb.dut.rstx
-tb.dut.clear
 tb.dut.mcand_is_signed
 tb.dut.mlier_is_signed
 tb.dut.start
+@800023
 tb.dut.mcand[2:0]
+@1001201
+-group_end
 @22
 tb.dut.mlier[3:0]
-@29
 tb.dut.prod1[2:0]
 @28
 tb.dut.last_stage_1
-tb.dut.last_stage_msb
 @22
 tb.dut.sum[3:0]
 @28
-tb.dut.prod_valid
-@22
+tb.dut.busy
+@800022
 tb.dut.prod[6:0]
+@1001202
+-group_end
 [pattern_trace] 1
 [pattern_trace] 0
