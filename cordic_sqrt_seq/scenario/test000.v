@@ -4,15 +4,6 @@ module tb;
 
 `include "inst.vinc"
 
-function real ref_sqrt(input real din);
-// obtains square root by Newton method
-real tmp;
-begin
-  ref_sqrt = din;
-  repeat (10) ref_sqrt = 0.5*(tmp + ref_sqrt/tmp);
-end
-endfunction
-
 task test1(input [31:0] fh, input [15:0] my_din);
 begin
   @(posedge clk);
@@ -23,12 +14,12 @@ begin
   @(negedge clk);
   wait(dut.busy == 1'b0);
   @(negedge clk);
-  $fwrite( fh, "in: %f, out: %f, err: %f\n"
+  $fwrite( fh, "in: %f, out: %f, exp: %f, err: %f\n"
          , $itor(my_din) / (1 << 15)
          , $itor(dut.dout) / (1 << 15)
+         , ($itor(my_din) / (1 << 15)) ** 0.5
          ,   ($itor(dut.dout) / (1 << 15))
-         //  - ref_sqrt($itor(my_din) / (1 << 15)) );
-           - ($itor(my_din) / (1 << 15)) ** 0.5 );
+           / ($itor(my_din) / (1 << 15)) ** 0.5 - 1.0 );
 end
 endtask
 

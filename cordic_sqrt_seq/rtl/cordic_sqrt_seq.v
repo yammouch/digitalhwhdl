@@ -56,7 +56,7 @@ mult #(.BW_CNT(5), .BW_MCAND(22), .BW_MLIER(19)) i_mult (
  .clk             (clk),
  .start           (kick_mult),
  .mcand           (coordx),
- .mlier           (19'h6A013),
+ .mlier           (19'h6DB5F),
  .busy            (mult_busy),
  .prod            (prod)
 );
