@@ -37,6 +37,15 @@ begin
   test1(f_hdl, 16'h6000);
   test1(f_hdl, 16'h7000);
   test1(f_hdl, 16'h8000);
+  test1(f_hdl, 16'h8008);
+  test1(f_hdl, 16'h8010);
+  test1(f_hdl, 16'h8020);
+  test1(f_hdl, 16'h8040);
+  test1(f_hdl, 16'h8080);
+  test1(f_hdl, 16'h8100);
+  test1(f_hdl, 16'h8200);
+  test1(f_hdl, 16'h8400);
+  test1(f_hdl, 16'h8800);
   test1(f_hdl, 16'h9000);
   test1(f_hdl, 16'hA000);
   test1(f_hdl, 16'hB000);

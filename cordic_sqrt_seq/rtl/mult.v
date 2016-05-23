@@ -18,7 +18,6 @@ input                          clk;
 input                          rstx;
 input                          mcand_is_signed;
 input                          mlier_is_signed;
-input                          clear;
 input                          start;
 input           [BW_MCAND-1:0] mcand;
 input           [BW_MLIER-1:0] mlier;
@@ -29,7 +28,6 @@ reg [BW_CNT-1:0] cnt;
 wire cnt_eq_0 = (cnt == {BW_CNT{1'b0}});
 always @(posedge clk or negedge rstx)
   if (~rstx)         cnt <= {BW_CNT{1'b0}};
-  else if (clear)    cnt <= {BW_CNT{1'b0}};
   else if (start)    cnt <= BW_MLIER;
   else if (cnt_eq_0) cnt <= {BW_CNT{1'b0}};
   else               cnt <= cnt - {{(BW_CNT-1){1'b0}}, 1'd1};
@@ -55,7 +53,6 @@ wire [BW_MCAND:0] sum = {   cnt_eq_1
 
 always @(posedge clk or negedge rstx)
   if (~rstx)          prod <= {(BW_MCAND+BW_MLIER){1'b0}};
-  else if (clear)     prod <= {(BW_MCAND+BW_MLIER){1'b0}};
   else if (start)     prod <= {mcand_is_signed, {(BW_MCAND-1){1'b0}}, mlier};
   else if (~cnt_eq_0) prod <= {sum, prod[BW_MLIER-1:1]};
 
