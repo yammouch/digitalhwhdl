@@ -36,27 +36,27 @@ wire [29:0] coordy_shift = {{8{coordy[21]}}, coordy} >> shamt;
 wire [29:0] coordx_shift = {{8{coordx[21]}}, coordx} >> shamt;
 always @(posedge clk or negedge rstx)
   if (!rstx)        coordy <= 22'd0;
-  else if (start)   coordy <= {{2'd0, din} - 18'h04000, 4'd0};
+  else if (start)   coordy <= {{2'd0, din} - 18'h02000, 4'd0};
   else if (tracing) coordy <= coordy
                             + ( coordx_shift[21:0] ^ {22{~coordy[21]}} )
                             + {21'd0, ~coordy[21]};
 always @(posedge clk or negedge rstx)
   if (!rstx)        coordx <= 22'd0;
-  else if (start)   coordx <= {{2'd0, din} + 18'h04000, 4'd0};
+  else if (start)   coordx <= {{2'd0, din} + 18'h02000, 4'd0};
   else if (tracing) coordx <= coordx
                             + ( coordy_shift[21:0] ^ {22{~coordy[21]}} )
                             + {21'd0, ~coordy[21]};
 wire kick_mult = (cnt == 4'd9);
 wire mult_busy;
 wire [40:0] prod;
-mult #(.BW_CNT(5), .BW_MCAND(22), .BW_MLIER(19)) i_mult (
+mult #(.BW_CNT(5), .BW_MCAND(22), .BW_MLIER(20)) i_mult (
  .mcand_is_signed (1'b1),
  .mlier_is_signed (1'b0),
  .rstx            (rstx),
  .clk             (clk),
  .start           (kick_mult),
  .mcand           (coordx),
- .mlier           (19'h6DB5F),
+ .mlier           (20'h9A8F3),
  .busy            (mult_busy),
  .prod            (prod)
 );
