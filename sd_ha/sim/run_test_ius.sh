@@ -13,8 +13,5 @@ run
 irun \
  -input intermediate/$1_dump.tcl \
  +access+r \
- +incdir+../tb \
- ../tb/tb_clk_gen.v \
- ../rtl/mult.v \
- ../rtl/cordic_sqrt_seq.v \
+ ../rtl/ha.v \
  ../scenario/$1.v
